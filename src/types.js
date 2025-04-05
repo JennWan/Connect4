@@ -1,9 +1,3 @@
-export const GROUPS = {
-  ARCTERYX_COMMUNITY_GRANT: "Arc'teryx Community Grant Program",
-  STRATEGIC_PARTNERSHIPS: "Strategic Partnerships Program", 
-  PARTICIPATORY_GRANTMAKING: "Participatory Grantmaking Program"
-}
-
 export const Message = {
   id: String,
   text: String,
@@ -15,4 +9,13 @@ export const Conversation = {
   id: String,
   title: String,
   messages: [Message],
+}
+
+export const Forum = {
+  conversations: [Conversation],
+}
+
+export const Group = {
+  id: String,
+  forum: Forum
 }

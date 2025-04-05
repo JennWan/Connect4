@@ -19,9 +19,11 @@ export class ConsoleInterface {
         console.log('1. List Conversations');
         console.log('2. Create New Conversation');
         console.log('3. Select Conversation');
-        console.log('4. Exit');
+        console.log('4. Delete Conversation');
+        console.log('5. Clear All Data');
+        console.log('6. Exit');
 
-        const choice = await this.prompt('Enter your choice (1-4): ');
+        const choice = await this.prompt('Enter your choice (1-6): ');
         
         switch (choice) {
             case '1':
@@ -34,6 +36,12 @@ export class ConsoleInterface {
                 await this.selectConversation();
                 break;
             case '4':
+                await this.deleteConversation();
+                break;
+            case '5':
+                await this.clearAllData();
+                break;
+            case '6':
                 process.exit(0);
             default:
                 console.log('Invalid choice. Please try again.');
@@ -124,6 +132,45 @@ export class ConsoleInterface {
         const author = await this.prompt('Enter your name: ');
         await this.forum.addMessage(this.currentConversationId, text, author);
         console.log('Message added successfully!');
+    }
+
+    async deleteConversation() {
+        const conversations = await this.forum.listConversation();
+        if (conversations.length === 0) {
+            console.log('No conversations available to delete.');
+            return;
+        }
+
+        console.log('\nAvailable Conversations:');
+        conversations.forEach(conv => {
+            console.log(`${conv.id}: ${conv.title}`);
+        });
+
+        const id = await this.prompt('Enter conversation ID to delete: ');
+        const conversation = conversations.find(c => c.id === parseInt(id));
+        
+        if (!conversation) {
+            console.log('Invalid conversation ID.');
+            return;
+        }
+
+        const confirm = await this.prompt(`Are you sure you want to delete conversation "${conversation.title}"? (yes/no): `);
+        if (confirm.toLowerCase() === 'yes') {
+            await this.forum.deleteConversation(parseInt(id));
+            console.log('Conversation deleted successfully.');
+        } else {
+            console.log('Deletion cancelled.');
+        }
+    }
+
+    async clearAllData() {
+        const confirm = await this.prompt('WARNING: This will delete ALL conversations and messages. Are you sure? (yes/no): ');
+        if (confirm.toLowerCase() === 'yes') {
+            await this.forum.clearAllData();
+            console.log('All data has been cleared.');
+        } else {
+            console.log('Operation cancelled.');
+        }
     }
 
     prompt(question) {
