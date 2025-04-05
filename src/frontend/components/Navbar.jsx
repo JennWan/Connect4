@@ -8,7 +8,7 @@ export default function Navbar() {
       <Link to="/" className="logo">Logo</Link>
       <nav className="nav-links">
         <Link to="/events" className="event">Events</Link>
-        <Link to="/forum" className="forum">Forum</Link>
+        <Link to="/groups" className="forum">Forum</Link>
       </nav>
     </header>
   );

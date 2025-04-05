@@ -15,7 +15,8 @@ function App() {
                 <Routes>
                     <Route path="/" element={< LaunchPage />} />
                     <Route path="/events" element={<EventGal />} />
-                    <Route path="/forum" element={<ForumTab />} />
+                    <Route path="/groups" element={<GroupTab />} />
+                    <Route path="/forum/:programId" element={<ForumTab />} />
                 </Routes>
             </Router>
         </>
