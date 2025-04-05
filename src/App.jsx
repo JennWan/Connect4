@@ -2,6 +2,7 @@ import './App.css'
 import LaunchPage from './frontend/components/LaunchPage'
 import Navbar from './frontend/components/Navbar'
 import EventGal from './frontend/components/EventGal';
+import GroupTab from './pages/GroupTab';
 import ForumTab from './pages/ForumTab';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 

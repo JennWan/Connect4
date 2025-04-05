@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Forum } from '../../forum';
+import { Forum }from '../forum.js';
 
 function ForumTab() {
   const { programId } = useParams();

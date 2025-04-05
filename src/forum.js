@@ -1,36 +1,25 @@
-import { promises as fs } from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DATA_FILE = path.join(__dirname, 'forum_data.json');
-
 export class Forum {
     constructor() {
+        this.storageKey = 'forum_data';
         this.conversations = [];
-        this.loadFromFile();
+        this.loadFromStorage();
     }
 
-    async loadFromFile() {
+    loadFromStorage() {
         try {
-            const data = await fs.readFile(DATA_FILE, 'utf8');
-            this.conversations = JSON.parse(data);
+            const data = localStorage.getItem(this.storageKey);
+            this.conversations = data ? JSON.parse(data) : [];
         } catch (error) {
-            if (error.code === 'ENOENT') {
-                // File doesn't exist yet, create it with empty data
-                await this.saveToFile();
-            } else {
-                console.warn('Failed to load data from file:', error);
-                this.conversations = [];
-            }
+            console.warn('Failed to load data from storage:', error);
+            this.conversations = [];
         }
     }
 
-    async saveToFile() {
+    saveToStorage() {
         try {
-            await fs.writeFile(DATA_FILE, JSON.stringify(this.conversations, null, 2));
+            localStorage.setItem(this.storageKey, JSON.stringify(this.conversations));
         } catch (error) {
-            console.warn('Failed to save data to file:', error);
+            console.warn('Failed to save data to storage:', error);
         }
     }
     
@@ -41,7 +30,7 @@ export class Forum {
 
     async listMessages(conversationId) {
         const conversation = this.conversations.find(c => c.id === conversationId);
-        return conversation.messages;
+        return conversation ? conversation.messages : [];
     }
 
     async createConversation(title) {
@@ -52,7 +41,7 @@ export class Forum {
             createdAt: new Date().toISOString()
         }
         this.conversations.push(conversation);
-        await this.saveToFile();
+        this.saveToStorage();
         return conversation;
     }
 
@@ -69,18 +58,18 @@ export class Forum {
             createdAt: new Date().toISOString()
         }
         conversation.messages.push(message);
-        await this.saveToFile();
+        this.saveToStorage();
         return message;
     }
 
     // Additional helper methods
     async clearAllData() {
         this.conversations = [];
-        await this.saveToFile();
+        this.saveToStorage();
     }
 
     async deleteConversation(conversationId) {
         this.conversations = this.conversations.filter(c => c.id !== conversationId);
-        await this.saveToFile();
+        this.saveToStorage();
     }
 }
