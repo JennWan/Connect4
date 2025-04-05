@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Forum }from '../forum.js';
 
 function ForumTab() {
   const { programId } = useParams();
+  const navigate = useNavigate();
   const [forum] = useState(new Forum());
   const [newTopicTitle, setNewTopicTitle] = useState('');
+  const [topics, setTopics] = useState([]);
+
+  useEffect(() => {
+    loadTopics();
+  }, []);
+
+  const loadTopics = async () => {
+    try {
+      const conversations = await forum.listConversation();
+      setTopics(conversations);
+    } catch (error) {
+      console.error('Failed to load topics:', error);
+    }
+  };
 
   const createDiscussion = async () => {
     if (newTopicTitle.trim()) {
@@ -13,11 +28,15 @@ function ForumTab() {
         const conversation = await forum.createConversation(newTopicTitle);
         console.log('Created new conversation:', conversation);
         setNewTopicTitle('');
-        // Refresh the topics list or update state
+        await loadTopics(); // Refresh the topics list
       } catch (error) {
         console.error('Failed to create conversation:', error);
       }
     }
+  };
+
+  const handleTopicClick = (topicId) => {
+    navigate(`/chat/${topicId}`);
   };
 
   const getForumData = () => {
@@ -25,42 +44,23 @@ function ForumTab() {
       case 'arcteryx':
         return {
           title: "Arc'teryx Community Grant Program Forum",
-          topics: [
-            {
-              id: 1,
-              title: "Welcome to Arc'teryx Community Grant Program",
-            }
-          ]
         };
       case 'strategic-partnerships':
         return {
           title: "Strategic Partnerships Program Forum",
-          topics: [
-            {
-              id: 1,
-              title: "Welcome to Strategic Partnerships Program",
-            }
-          ]
         };
       case 'participatory-grantmaking':
         return {
           title: "Participatory Grantmaking Program Forum",
-          topics: [
-            {
-              id: 1,
-              title: "Welcome to Participatory Grantmaking Program",
-            }
-          ]
         };
       default:
         return {
           title: "Forum Not Found",
-          topics: []
         };
     }
   };
 
-  const forumData = getForumData();
+  const forumData = getForumData(); 
 
   return (
     <div className="forum-container">
@@ -81,16 +81,14 @@ function ForumTab() {
       </div>
       
       <div className="forum-list">
-        {forumData.topics.map((topic) => (
+        {topics.map((topic) => (
           <div key={topic.id} className="forum-topic">
-            <div className="topic-main">
-              <h3 className="topic-title">{topic.title}</h3>
-              <p className="topic-author">by {topic.author}</p>
-            </div>
-            <div className="topic-details">
-              <span className="topic-date">{topic.date}</span>
-              <span className="topic-replies">{topic.replies} replies</span>
-            </div>
+            <button 
+              className="topic-title" 
+              onClick={() => handleTopicClick(topic.id)}
+            >
+              {topic.title}
+            </button>
           </div>
         ))}
       </div>

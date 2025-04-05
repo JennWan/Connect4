@@ -5,17 +5,14 @@ function GroupTab() {
   const navigate = useNavigate();
 
   const handleProgram1 = () => {
-    alert("Arc'teryx Community Grant Program");
     navigate('/forum/arcteryx');
   };
 
   const handleProgram2 = () => {
-    alert("Strategic Partnerships Program");
     navigate('/forum/strategic-partnerships');
   };
 
   const handleProgram3 = () => {
-    alert("Participatory Grantmaking Program");
     navigate('/forum/participatory-grantmaking');
   };
     
