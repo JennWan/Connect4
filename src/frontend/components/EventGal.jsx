@@ -12,6 +12,7 @@ function EventGal() {
     return (
         <div className="event-gallery">
             <h2>Happening Now</h2>
+            <button className="add-event">Add Event</button>
             <div className="gallery-grid">
                 {events.map((event) => (
                     <EventCard

@@ -1,22 +1,21 @@
-import './LaunchPage.css'
+import './LaunchPage.css';
 
-function LaunchPage({title, group, details}) {
-
+function LaunchPage({ title, group, details }) {
   return (
-    <>
-      <div className="image">
-      <img src="" alt="" />
-      <div className="event-info">
-        <h2>Event Info</h2>
-        <div className="info">
-            <h3>{title}</h3>
-            <h4>{group}</h4>
-            <h5>Details: {details}</h5>
-        </div>
+    <div className="launch-page">
+      <img
+        src="https://via.placeholder.com/1200x600"
+        alt={title}
+        className="launch-image"
+      />
+
+      <div className="event-info-panel">
+        <h2>{title}</h2>
+        <p><strong>Group:</strong> {group}</p>
+        <p><strong>Details:</strong> {details}</p>
       </div>
-      </div>
-    </>
-  )
+    </div>
+  );
 }
 
-export default LaunchPage
+export default LaunchPage;
