@@ -1,0 +1,9 @@
+.event-info h2:hover{
+    color: #b8b2b2;
+}
+.info{
+    display: none;
+}
+.event-info h2{
+    text-align: right;
+}

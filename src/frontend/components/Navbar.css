@@ -1,0 +1,28 @@
+.logo {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.logo:hover {
+    color: #b8b2b2;
+}
+
+.navbar a {
+    position: relative;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 40px;
+    text-decoration: inherit;
+    color:black;
+}
+
+.navbar a:hover {
+    color: #b8b2b2;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+}
