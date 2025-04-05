@@ -21,25 +21,3 @@
     object-fit: cover;
   }
   
-  /* Bottom info panel */
-  .event-info-panel {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* dark with transparency */
-    color: #fff;
-    padding: 1.5rem 2rem;
-    backdrop-filter: blur(6px); /* optional: adds a frosted glass effect */
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
-  }
-  
-  .event-info-panel h2 {
-    margin: 0;
-    font-size: 1.8rem;
-  }
-  
-  .event-info-panel p {
-    margin: 0.3rem 0;
-    font-size: 1rem;
-  }
-  
