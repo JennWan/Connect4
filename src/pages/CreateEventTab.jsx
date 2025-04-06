@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Events } from '../create-event.js';
 import Autocomplete from 'react-google-autocomplete';
 
-const MAPS_API_KEY = "AIzaSyC3Nq1JdEMbjAUCaxdTzxJW7jtf6x0phws"; // this API key is disabled
+const MAPS_API_KEY = "blank"; // this API key is disabled
 
 function CreateEventTab() {
     const navigate = useNavigate();
@@ -17,8 +17,9 @@ function CreateEventTab() {
     const handleCreateEvent = async () => {
         if (eventName.trim() && eventDesc.trim() && eventDate) {
             try {
+                console.log('Creating event with location:', eventLoc);
                 const event = await events.createEvent(eventName, eventDesc, eventDate, eventLoc, eventImage);
-                console.log('Created new event:', event);
+                console.log('Created event:', event);
                 navigate('/events');
             } catch (error) {
                 console.error('Failed to create event:', error);
@@ -72,8 +73,10 @@ function CreateEventTab() {
                     <label htmlFor="eventLoc">Event Location:</label>
                     <Autocomplete
                         apiKey = {MAPS_API_KEY}
-                        onPlaceSlected = {(place) => setEventLoc(place.formatted_address)}
-                        // onChange={(e) => setEventLoc(e.target.value)}
+                        onPlaceSelected = {(place) => {
+                            console.log('Place selected:', place);
+                            setEventLoc(place.formatted_address);
+                        }}
                         placeholder="Enter event location"
                         style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
                     />
