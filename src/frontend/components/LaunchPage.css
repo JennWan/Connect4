@@ -19,6 +19,25 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #f5f5f5;
+}
+
+.event-card {
+    width: 80%;
+    max-width: 800px;
+    height: 60vh;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-card:hover {
+    transform: scale(1.02);
 }
 
 .launch-image {
@@ -26,4 +45,48 @@
     height: 100vh;
     object-fit: contain;
     display: block;
+}
+
+.event-info {
+    padding: 20px;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.event-info h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.event-info p {
+    margin: 10px 0 0;
+    color: #666;
+    font-size: 16px;
+}
+
+.no-events {
+    text-align: center;
+    padding: 20px;
+}
+
+.no-events h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.no-events button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.no-events button:hover {
+    background-color: #0056b3;
 }
