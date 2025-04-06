@@ -6,6 +6,17 @@
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
-  "permissions": ["storage"],
-  "host_permissions": ["<all_urls>"]
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "http://localhost/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": ["http://localhost/*"],
+    "js": ["syncStorage.js"]
+  }]
 }
