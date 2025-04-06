@@ -6,6 +6,7 @@ import GroupTab from './pages/GroupTab';
 import EventPage from './frontend/components/EventPage'
 import ForumTab from './pages/ForumTab';
 import ChatTab from './pages/ChatTab';
+import CreateEventTab from './pages/CreateEventTab';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
                     <Route path="/forum/:programId" element={<ForumTab />} />
                     <Route path="/event" element={<EventPage />} /> 
                     <Route path="/chat/:topicId" element={<ChatTab />} />
+                    <Route path="/create-event" element={<CreateEventTab />} />
                 </Routes>
             </Router>
         </>

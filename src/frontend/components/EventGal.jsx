@@ -1,19 +1,26 @@
 import './EventGal.css'
 import EventCard from './EventCard';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Events } from '../../create-event.js';
 
 function EventGal() {
     const navigate = useNavigate();
+    const [events] = useState(new Events());
+    const [eventList, setEventList] = useState([]);
 
-    const events = [
-        {
-            id: 1,
-            title: "Hackathon 2025",
-            date: "April 10, 2025",
-            image: ""
-        },
-    ];
+    useEffect(() => {
+        loadEvents();
+    }, []);
+
+    const loadEvents = async () => {
+        try {
+            const eventsList = await events.listEvents();
+            setEventList(eventsList);
+        } catch (error) {
+            console.error('Failed to load events:', error);
+        }
+    };
 
     const handleEventClick = (event) => {
         navigate('/event', { state: event });
@@ -22,19 +29,19 @@ function EventGal() {
     return (
         <div className="event-gallery">
             <h2>Happening Now</h2>
-            <button className="add-event">Add Event</button>
+            <button 
+                className="add-event"
+                onClick={() => navigate('/create-event')}
+            >
+                Add Event
+            </button>
             <div className="gallery-grid">
-                {events.map((event) => (
-                    // Trigger handleEventClick function when event card is clicked
+                {eventList.map((event) => (
                     <div
                         key={event.id}
-                        onClick={() => handleEventClick(event)}  // On click, call the handler
+                        onClick={() => handleEventClick(event)}
                     >
-                        <EventCard
-                            title={event.title}
-                            date={event.date}
-                            image={event.image}
-                        />
+                        <EventCard event={event} />
                     </div>
                 ))}
             </div>
