@@ -8,14 +8,15 @@ function EventGal() {
     const navigate = useNavigate();
     const [events] = useState(new Events());
     const [eventList, setEventList] = useState([]);
+    const [showUpcomingOnly, setShowUpcomingOnly] = useState(false);
 
     useEffect(() => {
         loadEvents();
-    }, []);
+    }, [showUpcomingOnly]);
 
     const loadEvents = async () => {
         try {
-            const eventsList = await events.listEvents();
+            const eventsList = await events.listEvents(showUpcomingOnly);
             setEventList(eventsList);
         } catch (error) {
             console.error('Failed to load events:', error);
@@ -26,19 +27,27 @@ function EventGal() {
         navigate('/event', { state: event });
     };
 
+    const toggleUpcomingFilter = () => {
+        setShowUpcomingOnly(!showUpcomingOnly);
+    };
+
     return (
         <div className="event-gallery">
             <div className="event-head">
                 <h2>EVENTS</h2>
-                <button className="upcoming-filter">Upcoming</button>
+                <button 
+                    className={`upcoming-filter ${showUpcomingOnly ? 'active' : ''}`}
+                    onClick={toggleUpcomingFilter}
+                >
+                    {showUpcomingOnly ? 'Show All Events' : 'Upcoming Events'}
+                </button>
                 <button
-                className="add-event"
-                onClick={() => navigate('/create-event')}
-                    >
+                    className="add-event"
+                    onClick={() => navigate('/create-event')}
+                >
                     Add Event
                 </button>
             </div>
-        
 
             <div className="gallery-grid">
                 {eventList.map((event) => (
@@ -54,4 +63,4 @@ function EventGal() {
     );
 }
 
-export default EventGal
+export default EventGal;
