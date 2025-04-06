@@ -44,7 +44,7 @@ export class Events {
         return this.events;
     }
 
-    async createEvent(name, desc, date, imageUrl = '') {
+    async createEvent(name, desc, date, location, imageUrl = '') {
         const event = {
             id: this.events.length,
             name: name,
@@ -56,6 +56,7 @@ export class Events {
                 hour: '2-digit',
                 minute: '2-digit'
             }),
+            location: location,
             imageUrl: this.getValidImageUrl(imageUrl),
             createdAt: new Date().toISOString()
         };
