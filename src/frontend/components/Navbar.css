@@ -1,6 +1,6 @@
-.logo {
-    font-size: 32px;
-    font-weight: 700;
+.logo img{
+    width: 100px;
+    margin-left:0;
 }
 
 .logo:hover {

@@ -41,10 +41,12 @@
     transition: background-color 0.2s;
     margin-top: 1rem;
 }
-.created{
+
+.created {
     display: flex;
 }
-.description-join{
+
+.description-join {
     display: flex;
     align-items: center;
     gap: 5rem;
