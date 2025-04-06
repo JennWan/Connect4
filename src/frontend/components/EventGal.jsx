@@ -31,13 +31,14 @@ function EventGal() {
             <div className="event-head">
                 <h2>EVENTS</h2>
                 <button className="upcoming-filter">Upcoming</button>
-            </div>
-            <button
+                <button
                 className="add-event"
                 onClick={() => navigate('/create-event')}
-                >
-                Add Event
-            </button>
+                    >
+                    Add Event
+                </button>
+            </div>
+        
 
             <div className="gallery-grid">
                 {eventList.map((event) => (
