@@ -1,6 +1,8 @@
 export class Forum {
-    constructor() {
-        this.storageKey = 'forum_data';
+    constructor(forumId = 'default') {
+        this.forumId = forumId;
+        this.baseStorageKey = 'forum_data';
+        this.storageKey = `${this.baseStorageKey}_${forumId}`;
         this.conversations = [];
         this.loadFromStorage();
     }
@@ -65,7 +67,7 @@ export class Forum {
     // Additional helper methods
     async clearAllData() {
         this.conversations = [];
-        this.saveToStorage();
+        localStorage.removeItem(this.storageKey);
     }
 
     async deleteConversation(conversationId) {

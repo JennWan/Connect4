@@ -6,7 +6,7 @@ import './ForumTab.css'
 function ForumTab() {
   const { programId } = useParams();
   const navigate = useNavigate();
-  const [forum] = useState(new Forum());
+  const [forum] = useState(new Forum(programId));
   const [newTopicTitle, setNewTopicTitle] = useState('');
   const [topics, setTopics] = useState([]);
 

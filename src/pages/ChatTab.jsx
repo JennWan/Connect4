@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Forum } from '../forum.js';
 
 function ChatTab() {
     const { topicId } = useParams();
+    const location = useLocation();
     const navigate = useNavigate();
-    const [forum] = useState(new Forum());
+    
+    // Extract programId from the URL path
+    const programId = location.pathname.split('/')[2];
+    const [forum] = useState(new Forum(programId));
     const [topic, setTopic] = useState(null);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
