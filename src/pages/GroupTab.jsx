@@ -19,6 +19,11 @@ function GroupTab() {
 
     return (
         <div className="group-tab">
+            <div className="image-banner">
+                <img src="./events/forum.webp" alt="Forum Banner" />
+                <h2 className="banner-title">FORUM</h2>
+            </div>
+            <div className="content-container">
             <h2>Select a group to communicate with!</h2>
             <div className="button-container">
                 <div className="button-item">
@@ -39,6 +44,7 @@ function GroupTab() {
                     </button>
                     <img src="events\Participatory Grantmaking Program.png" alt="" />
                 </div>
+            </div>
             </div>
         </div>
     );

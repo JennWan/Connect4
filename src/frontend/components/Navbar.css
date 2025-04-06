@@ -30,6 +30,6 @@
     position: fixed; 
     top: 0; 
     left: 0; 
-    background-color: rgba(169, 169, 169, 0.7); 
+    background-color: rgba(169, 169, 169, 0.5); 
     z-index: 1000; 
 }
