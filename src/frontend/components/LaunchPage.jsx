@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Events } from '../../create-event.js';
 import { useState } from 'react';
+import './LaunchPage.css'
 
 function LaunchPage() {
     const navigate = useNavigate();
