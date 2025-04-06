@@ -7,6 +7,8 @@
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
+    height: calc(100vh - 100px); /* Subtract navbar height */
+    overflow-y: auto;
 }
 
 h2 {
@@ -53,15 +55,15 @@ h2 {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
+    padding-bottom: 20px;
 }
 
 .gallery-grid div {
     cursor: pointer;
     transition: transform 0.3s ease;
-    flex-shrink: 0;
-    width: 300px;
+    width: 100%;
 }
 
 .gallery-grid div:hover {
