@@ -40,8 +40,37 @@ export class Events {
         }
     }
 
-    async listEvents() {
-        return this.events;
+    async listEvents(showUpcomingOnly) {
+        if (!showUpcomingOnly) {
+            return this.events;
+        }
+        
+        const now = new Date();
+        const twoWeeksFromNow = new Date(now.getTime() + (14 * 24 * 60 * 60 * 1000));
+        
+        return this.events.filter(event => {
+            try {
+                let eventDate;
+                
+                const dateStr = event.date;
+                const [day, month, year, , time] = dateStr.split(' ');
+                const [hours, minutes] = time.split(':');
+                eventDate = new Date(year, 
+                    ['January', 'February', 'March', 'April', 'May', 'June', 
+                        'July', 'August', 'September', 'October', 'November', 'December']
+                    .indexOf(month), 
+                    parseInt(day), 
+                    parseInt(hours), 
+                    parseInt(minutes));
+            
+                const isInRange = eventDate >= now && eventDate <= twoWeeksFromNow;
+
+                return isInRange;
+            } catch (error) {
+                console.error('Error parsing date:', error);
+                return false;
+            }
+        });
     }
 
     async createEvent(name, desc, date, location, imageUrl = '') {
