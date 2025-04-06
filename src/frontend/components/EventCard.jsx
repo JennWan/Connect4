@@ -21,6 +21,7 @@ const EventCard = ({ event }) => {
             />
             <h3>{event.name}</h3>
             <p>{event.desc}</p>
+            <p>{event.location}</p>
         </div>
     );
 };
