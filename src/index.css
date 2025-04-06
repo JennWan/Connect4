@@ -9,8 +9,12 @@ button{
     cursor: pointer; 
     transition: background-color 0.3s, transform 0.2s; 
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    font-family: "Inter", sans-serif;
 }
 button:hover {
     background-color: #76889c;
     transform: translateY(-2px); 
+}
+h2{
+    font-family: Arial, Helvetica, sans-serif
 }

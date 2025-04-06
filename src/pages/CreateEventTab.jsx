@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Events } from '../create-event.js';
+import Autocomplete from 'react-google-autocomplete';
+
+const MAPS_API_KEY = "AIzaSyC3Nq1JdEMbjAUCaxdTzxJW7jtf6x0phws";
 
 function CreateEventTab() {
     const navigate = useNavigate();
@@ -8,12 +11,13 @@ function CreateEventTab() {
     const [eventName, setEventName] = useState('');
     const [eventDesc, setEventDesc] = useState('');
     const [eventDate, setEventDate] = useState('');
+    const [eventLoc, setEventLoc] = useState('');
     const [eventImage, setEventImage] = useState('');
 
     const handleCreateEvent = async () => {
         if (eventName.trim() && eventDesc.trim() && eventDate) {
             try {
-                const event = await events.createEvent(eventName, eventDesc, eventDate, eventImage);
+                const event = await events.createEvent(eventName, eventDesc, eventDate, eventLoc, eventImage);
                 console.log('Created new event:', event);
                 navigate('/events');
             } catch (error) {
@@ -65,6 +69,17 @@ function CreateEventTab() {
                 </div>
 
                 <div>
+                    <label htmlFor="eventLoc">Event Location:</label>
+                    <Autocomplete
+                        apiKey = {MAPS_API_KEY}
+                        onPlaceSlected = {(place) => setEventLoc(place.formatted_address)}
+                        // onChange={(e) => setEventLoc(e.target.value)}
+                        placeholder="Enter event location"
+                        style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
+                    />
+                </div>
+
+                <div>
                     <label htmlFor="eventImage">Event Image URL (optional):</label>
                     <input
                         id="eventImage"
@@ -78,7 +93,6 @@ function CreateEventTab() {
 
                 <button
                     onClick={handleCreateEvent}
-                    style={{ padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
                 >
                     Create Event
                 </button>
