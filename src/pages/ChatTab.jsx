@@ -7,45 +7,62 @@ function ChatTab() {
     const location = useLocation();
     const navigate = useNavigate();
     
-    // Extract programId from the URL path
-    const programId = location.pathname.split('/')[2];
+    // Get the programId from the previous page's state or default to 'default'
+    const programId = location.state?.programId || 'default';
     const [forum] = useState(new Forum(programId));
     const [topic, setTopic] = useState(null);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const [author, setAuthor] = useState('');
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         loadTopicAndMessages();
-    }, [topicId]);
+    }, [topicId, forum]);
 
     const loadTopicAndMessages = async () => {
         try {
+            setError(null);
             const conversations = await forum.listConversation();
             const currentTopic = conversations.find(c => c.id === parseInt(topicId));
             if (currentTopic) {
                 setTopic(currentTopic);
                 setMessages(currentTopic.messages);
+            } else {
+                setError('Topic not found');
             }
         } catch (error) {
             console.error('Failed to load topic:', error);
+            setError('Failed to load topic. Please try again.');
         }
     };
 
     const sendMessage = async () => {
         if (newMessage.trim() && author.trim()) {
             try {
+                setError(null);
                 await forum.addMessage(parseInt(topicId), newMessage, author);
                 setNewMessage('');
                 await loadTopicAndMessages();
             } catch (error) {
                 console.error('Failed to send message:', error);
+                setError('Failed to send message. Please try again.');
             }
         }
     };
 
+    if (error) {
+        return (
+            <div style={{ maxWidth: '800px', margin: '0 auto', padding: '20px', textAlign: 'center' }}>
+                <h2>Error</h2>
+                <p>{error}</p>
+                <button onClick={() => navigate(-1)}>Back to Forum</button>
+            </div>
+        );
+    }
+
     if (!topic) {
-        return <div>Loading...</div>;
+        return <div style={{ textAlign: 'center', padding: '20px' }}>Loading...</div>;
     }
 
     return (

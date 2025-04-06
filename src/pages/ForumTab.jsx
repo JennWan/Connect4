@@ -37,7 +37,7 @@ function ForumTab() {
   };
 
   const handleTopicClick = (topicId) => {
-    navigate(`/chat/${topicId}`);
+    navigate(`/chat/${topicId}`, { state: { programId } });
   };
 
   const getForumData = () => {
