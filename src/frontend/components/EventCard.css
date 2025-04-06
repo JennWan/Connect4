@@ -5,6 +5,8 @@
     padding: 1rem;
     transition: transform 0.2s ease;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .event-card:hover {
@@ -20,31 +22,38 @@
 }
 
 .event-card h3 {
-    /* margin: 0.5rem 0; */
     font-size: 1.2rem;
     color: #333;
+    margin: 0.5rem 0;
 }
 
 .event-card p {
     color: #666;
-    /* margin-bottom: 1rem; */
+    margin: 0.5rem 0;
 }
 
 .desc {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
 }
 
-
-.location{
+.location {
     display: flex;
-    align-items: left;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 0.5rem;
 }
 
-.location img{
+.location img {
     height: 20px;
     width: auto;
     margin-right: 5px;
+}
+
+.location p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
 }
