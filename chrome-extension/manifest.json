@@ -1,14 +1,11 @@
 {
   "manifest_version": 3,
-  "name": "Page Wallpaper Setter",
+  "name": "Custom New Tab Wallpaper + Google Search",
   "version": "1.0",
-  "description": "Replaces the current page background with an image from localStorage.",
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ],
+  "description": "Replaces new tab with a custom background and Google search bar.",
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
   "permissions": ["storage"],
   "host_permissions": ["<all_urls>"]
 }
