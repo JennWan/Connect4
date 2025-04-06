@@ -1,3 +1,8 @@
+.event-head {
+    display: flex;
+    flex-direction: row;
+}
+
 .event-gallery {
     padding: 20px;
     max-width: 1200px;
@@ -7,7 +12,21 @@
 h2 {
     font-size: 2rem;
     margin-bottom: 20px;
-    text-align: center;
+}
+
+.upcoming-filter {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    align-self: flex-end;
+    height: 40px;
 }
 
 .add-event {
@@ -19,8 +38,10 @@ h2 {
     cursor: pointer;
     transition: background-color 0.3s;
     display: block;
-    margin: 0 auto;
     margin-bottom: 20px;
+    margin-left: auto;
+    align-self: flex-end;
+    height: 40px;
 }
 
 .gallery-scroll-container {
@@ -31,8 +52,9 @@ h2 {
 }
 
 .gallery-grid {
-    display: flex;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
 }
 
 .gallery-grid div {
