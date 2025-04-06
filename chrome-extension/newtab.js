@@ -12,6 +12,14 @@ if (item && item.imageUrl) {
   document.getElementById('event-name').textContent = 'No event found';
 }
 
+document.getElementById('search-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const query = document.getElementById('search-box').value.trim();
+    if (query) {
+      window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    }
+  });  
+
 // Attach button event listeners
 document.querySelectorAll('button[data-link]').forEach(btn => {
     btn.addEventListener('click', () => {
