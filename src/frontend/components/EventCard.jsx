@@ -5,10 +5,6 @@ import './EventCard.css'
 const eventsManager = new Events();
 
 const EventCard = ({ event }) => {
-    const handleDelete = async () => {
-        await eventsManager.deleteEvent(event.id);
-        window.location.reload();
-    };
 
     const getImageUrl = () => {
         return eventsManager.getValidImageUrl(event.imageUrl);
@@ -25,7 +21,6 @@ const EventCard = ({ event }) => {
             />
             <h3>{event.name}</h3>
             <p>{event.desc}</p>
-            <button onClick={handleDelete}>Delete</button>
         </div>
     );
 };
