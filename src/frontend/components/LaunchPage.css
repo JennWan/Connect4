@@ -1,13 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
 .launch-page {
-    position: relative;
-    width: 100vw;
     height: 100vh;
-    overflow: auto;
-    /* allow image to scroll if needed */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 100vw;
+    background-size: cover; 
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: sans-serif;
+    color: white;
+    overflow: hidden;
+    position: relative;
+}
+
+#logo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+#logo:hover {
+    transform: scale(1.05);
+}
+
+#search-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    z-index: 2;
+}
+
+#search-box {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: box-shadow 0.2s ease;
+}
+
+#search-box:focus {
+    box-shadow: 0 0 10px rgba(66, 133, 244, 0.5);
+}
+
+#overlay {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+    z-index: 2;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#overlay:hover {
+    transform: translateY(-5px);
+}
+
+#event-name {
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#event-date {
+    margin: 0;
+    font-size: 16px;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+#event-desc {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 .event-card {
