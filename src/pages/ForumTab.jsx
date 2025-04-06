@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Forum }from '../forum.js';
+import './ForumTab.css'
 
 function ForumTab() {
   const { programId } = useParams();

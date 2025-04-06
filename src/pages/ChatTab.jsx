@@ -80,7 +80,7 @@ function ChatTab() {
                 />
                 <button 
                     onClick={sendMessage}
-                    style={{ padding: '8px 16px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                    style={{ padding: '8px 16px', backgroundColor: '#424951', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
                 >
                     Send
                 </button>
