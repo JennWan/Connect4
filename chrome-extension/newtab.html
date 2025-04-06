@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom New Tab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav id="navbar">
+    <button data-link="events">Events</button>
+    <button data-link="groups")">Forums</button>
+  </nav>
+
+  <form id="search-form" autocomplete="off">
+    <input
+      type="text"
+      id="search-box"
+      placeholder="Search Google..."
+      aria-label="Search Google"
+    />
+  </form>
+
+  <div id="overlay">
+    <h1 id="event-name"></h1>
+    <p id="event-date"></p>
+    <p id="event-desc"></p>
+  </div>
+
+  <script src="newtab.js"></script>
+</body>
+</html>
