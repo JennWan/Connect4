@@ -22,13 +22,21 @@ function EventPage() {
         <div className="event-page">
             {event ? (
                 <>
-                    <img
-                        src={getImageUrl()}
-                        alt={event.name}
-                        onError={(e) => {
-                            e.target.src = eventsManager.defaultImageUrl;
-                        }}
-                    />
+                    <div className = "event-images">
+                        <img className="event-img"
+                            src={getImageUrl()}
+                            alt={event.name}
+                            onError={(e) => {
+                                e.target.src = eventsManager.defaultImageUrl;
+                            }}
+                        />
+                        <div className = "location-tag">
+                            <img className="pin" src="./events/location-pin.png"/>
+                            <h3 >{event.location}</h3>
+                        </div>
+                        
+                    </div>
+                   
                     <div className="event-details">
                         <h1>{event.name}</h1>
                         <div className="description-join">

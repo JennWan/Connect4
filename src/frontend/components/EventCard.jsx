@@ -25,7 +25,7 @@ const EventCard = ({ event }) => {
             </div>
         
             <div className = "location">
-                <img src="./events/location-pin.webp" alt="" />
+                <img src="./events/location-pin.png" alt="" />
                 <p>{event.location}</p>
             </div>
 
