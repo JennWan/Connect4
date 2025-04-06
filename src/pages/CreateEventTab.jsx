@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Events } from '../create-event.js';
 import Autocomplete from 'react-google-autocomplete';
 
-const MAPS_API_KEY = "AIzaSyC3Nq1JdEMbjAUCaxdTzxJW7jtf6x0phws";
+const MAPS_API_KEY = "AIzaSyC3Nq1JdEMbjAUCaxdTzxJW7jtf6x0phws"; // this API key is disabled
 
 function CreateEventTab() {
     const navigate = useNavigate();

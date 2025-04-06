@@ -19,9 +19,18 @@ const EventCard = ({ event }) => {
                     e.target.src = eventsManager.defaultImageUrl;
                 }}
             />
-            <h3>{event.name}</h3>
-            <p>{event.desc}</p>
-            <p>{event.location}</p>
+            <div className="desc">
+                <h3>{event.name}</h3>
+                <p>{event.desc}</p>
+            </div>
+        
+            <div className = "location">
+                <img src="./events/location-pin.webp" alt="" />
+                <p>{event.location}</p>
+            </div>
+
+            
+            
         </div>
     );
 };

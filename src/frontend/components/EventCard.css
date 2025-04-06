@@ -20,12 +20,31 @@
 }
 
 .event-card h3 {
-    margin: 0.5rem 0;
+    /* margin: 0.5rem 0; */
     font-size: 1.2rem;
     color: #333;
 }
 
 .event-card p {
     color: #666;
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
+}
+
+.desc {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+
+
+.location{
+    display: flex;
+    align-items: left;
+}
+
+.location img{
+    height: 20px;
+    width: auto;
+    margin-right: 5px;
 }

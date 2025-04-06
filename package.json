@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.8.4",
     "commander": "^13.1.0",
     "react": "^19.0.0",
     "react-google-autocomplete": "^2.7.5",
