@@ -2,6 +2,13 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
+
+}
+
+.event-details {
+    display: flex;
+    align-items: center;
+    gap: 5rem;
 }
 
 .event-page img {
@@ -25,7 +32,6 @@
 }
 
 .event-page .join-event {
-    background-color: #007bff;
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -35,7 +41,12 @@
     transition: background-color 0.2s;
     margin-top: 1rem;
 }
-
-.event-page .join-event:hover {
-    background-color: #0056b3;
+.created{
+    display: flex;
+}
+.description-join{
+    display: flex;
+    align-items: center;
+    gap: 5rem;
+    margin-left: auto;
 }
