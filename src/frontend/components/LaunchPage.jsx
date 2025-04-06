@@ -1,16 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Events } from '../../create-event.js';
+import { useState } from 'react';
 
 function LaunchPage() {
     const navigate = useNavigate();
-
-    // Example event data 
-    const event = {
-        id: 1,
-        title: "Sample Event",
-        group: "Sample Group",
-        details: "This is a detailed description of the event."
-    };
+    const [events] = useState(new Events());
+    const event = events.getRandom();
 
     const handleEventClick = () => {
         navigate('/event', { state: event }); // Pass event data to the EventPage
@@ -19,9 +15,9 @@ function LaunchPage() {
     return (
         <div className="launch-page">
             <div className="event-card" onClick={handleEventClick}>
-                <img src="event-image.jpg" className="launch-image" />
-                <h2>{event.title}</h2>
-                <p>{event.group}</p>
+                <img src={event.imageUrl} className="launch-image" />
+                <h2>{event.name}</h2>
+                <p>{event.desc}</p>
             </div>
         </div>
     );
