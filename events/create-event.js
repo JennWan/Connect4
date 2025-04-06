@@ -6,6 +6,7 @@ export class Events {
 
     constructor() {
         this.storageKey = 'events_data';
+        this.randomStorageKey = 'random_event';
         this.events = [];
         this.loadFromStorage();
         
@@ -29,6 +30,19 @@ export class Events {
         }
     }
 
+   getRandom() {
+        const randomEvent = events[Math.floor(Math.random() * this.events.length)];
+        this.saveRandom(randomEvent);
+        return randomEvent;
+   }
+
+   saveRandom(event) {
+        try {
+            localStorage.setItem(this.randomStorageKey, JSON.stringify(event));
+        }  catch(error) {
+            console.warn('Failed to save data to storage:', error);
+        }
+   }
 
     async listEvents() {
         return this.events;
@@ -43,6 +57,7 @@ export class Events {
             picture: picture,
         }
         this.events.push(event);
+        this.saveToStorage();
         return event;
     }
 
