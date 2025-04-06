@@ -1,5 +1,5 @@
 .logo img{
-    width: 100px;
+    width: 70px;
     margin-left:0;
 }
 
@@ -24,6 +24,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 32px;
-    height: 10px;
+    padding: 20px 20px;
+    height: 40px;
 }
