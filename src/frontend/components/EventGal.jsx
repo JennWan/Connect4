@@ -28,13 +28,13 @@ function EventGal() {
 
     return (
         <div className="event-gallery">
-            <h2>Happening Now</h2>
             <button 
                 className="add-event"
                 onClick={() => navigate('/create-event')}
-            >
+                >
                 Add Event
             </button>
+            <h2>Happening Now</h2>
             <div className="gallery-grid">
                 {eventList.map((event) => (
                     <div
