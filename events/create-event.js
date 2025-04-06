@@ -2,8 +2,33 @@ import fs from 'fs';
 import path from 'path';
 
 export class Events {
-    events = [];
     defaultPict = fs.readFileSync(path.resolve("ARC'TERYX.png"), "base64");
+
+    constructor() {
+        this.storageKey = 'events_data';
+        this.events = [];
+        this.loadFromStorage();
+        
+    }
+
+    loadFromStorage() {
+        try {
+            const data = localStorage.getItem(this.storageKey);
+            this.events = data ? JSON.parse(data) : [];
+        } catch (error) {
+            console.warn('Failed to load data from storage:', error);
+            this.events = [];
+        }
+    }
+
+    saveToStorage() {
+        try {
+            localStorage.setItem(this.storageKey, JSON.stringify(this.events));
+        } catch (error) {
+            console.warn('Failed to save data to storage:', error);
+        }
+    }
+
 
     async listEvents() {
         return this.events;
