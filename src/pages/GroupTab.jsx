@@ -21,7 +21,7 @@ function GroupTab() {
         <div className="group-tab">
             <div className="image-banner">
                 <img src="./events/forum.webp" alt="Forum Banner" />
-                <h2 className="banner-title">FORUM</h2>
+                <h2 className="banner-title">FORUMS</h2>
             </div>
             <div className="content-container">
             <h2>Select a group to communicate with!</h2>
