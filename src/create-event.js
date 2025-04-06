@@ -44,11 +44,12 @@ export class Events {
         return this.events;
     }
 
-    async createEvent(name, desc, imageUrl = '') {
+    async createEvent(name, desc, date, imageUrl = '') {
         const event = {
             id: this.events.length,
             name: name,
             desc: desc,
+            date: new Date(date).toLocateDateString("en-GB"),
             imageUrl: this.getValidImageUrl(imageUrl),
             createdAt: new Date().toISOString()
         };
