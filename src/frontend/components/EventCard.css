@@ -29,17 +29,3 @@
     color: #666;
     margin-bottom: 1rem;
 }
-
-.event-card button {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.event-card button:hover {
-    background-color: #c82333;
-}
