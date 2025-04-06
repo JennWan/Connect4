@@ -67,7 +67,7 @@ export class Forum {
     // Additional helper methods
     async clearAllData() {
         this.conversations = [];
-        localStorage.removeItem(this.storageKey);
+        this.saveToStorage();
     }
 
     async deleteConversation(conversationId) {

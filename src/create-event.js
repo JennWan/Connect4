@@ -49,7 +49,13 @@ export class Events {
             id: this.events.length,
             name: name,
             desc: desc,
-            date: new Date(date).toLocateDateString("en-GB"),
+            date: new Date(date).toLocaleString("en-GB", {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            }),
             imageUrl: this.getValidImageUrl(imageUrl),
             createdAt: new Date().toISOString()
         };

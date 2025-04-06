@@ -37,7 +37,7 @@ function EventPage() {
                         </div>
                     </div>
                     <div className="created">
-                    <p><strong>Created:</strong> {new Date(event.createdAt).toLocaleString()}</p>
+                    <p><strong>Time:</strong> {event.date}</p>
                     </div>
 
                 </>

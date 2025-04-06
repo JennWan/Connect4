@@ -7,12 +7,13 @@ function CreateEventTab() {
     const [events] = useState(new Events());
     const [eventName, setEventName] = useState('');
     const [eventDesc, setEventDesc] = useState('');
+    const [eventDate, setEventDate] = useState('');
     const [eventImage, setEventImage] = useState('');
 
     const handleCreateEvent = async () => {
-        if (eventName.trim() && eventDesc.trim()) {
+        if (eventName.trim() && eventDesc.trim() && eventDate) {
             try {
-                const event = await events.createEvent(eventName, eventDesc, eventImage);
+                const event = await events.createEvent(eventName, eventDesc, eventDate, eventImage);
                 console.log('Created new event:', event);
                 navigate('/events');
             } catch (error) {
@@ -49,6 +50,17 @@ function CreateEventTab() {
                         onChange={(e) => setEventDesc(e.target.value)}
                         placeholder="Enter event description"
                         style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px', minHeight: '100px' }}
+                    />
+                </div>
+
+                <div>
+                    <label htmlFor="eventDate">Event Date:</label>
+                    <input
+                        id="eventDate"
+                        type="datetime-local"
+                        value={eventDate}
+                        onChange={(e) => setEventDate(e.target.value)}
+                        style={{ width: '100%', padding: '8px', border: '1px solid #ccc', borderRadius: '4px' }}
                     />
                 </div>
 
