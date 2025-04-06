@@ -31,13 +31,13 @@ function GroupTab() {
                     <button className="program-button" onClick={handleProgram2}>
                         Strategic Partnerships Program
                     </button>
-                    <img src="" alt="" />
+                    <img src=".\events\Strategic Partnerships Program.png" alt="" />
                 </div>
                 <div className="button-item">
                     <button className="program-button" onClick={handleProgram3}>
                         Participatory Grantmaking Program
                     </button>
-                    <img src="" alt="" />
+                    <img src="events\Participatory Grantmaking Program.png" alt="" />
                 </div>
             </div>
         </div>
