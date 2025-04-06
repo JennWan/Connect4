@@ -6,7 +6,6 @@ function EventCard({ title, date, image }) {
         <img src={image} alt={title} />
         <h3>{title}</h3>
         <p>{date}</p>
-        <button className="join-event">Join Event</button>
       </div>
     );
   }

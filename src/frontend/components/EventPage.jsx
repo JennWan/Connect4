@@ -7,12 +7,13 @@ function EventPage() {
 
   return (
     <div className="event-page">
-        
+
       {event ? (
         <>
           <h1>{event.title}</h1>
           <p><strong>Group:</strong> {event.group}</p>
           <p><strong>Details:</strong> {event.details}</p>
+          <button className="join-event">Join Event</button>
         </>
       ) : (
         <p>Event not found</p>
